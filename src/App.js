@@ -5,8 +5,12 @@ import Background from './Background';
 import Timer from './Timer';
 
 const App = () => {
-  const [title, setState] = useState('Title');
-  const [minutes, setMinutes] = useState(25);
+  var url = new URL(window.location);
+  var params = new URLSearchParams(url.search);
+  const minutesFromUrl = parseInt(params.get('minutes'), 10);
+  const initialMinutes = isNaN(minutesFromUrl) ? 50 : minutesFromUrl;
+  const [title, setState] = useState(params.get('title') || 'Title');
+  const [minutes, setMinutes] = useState(initialMinutes);
   return (
     <div className="App">
       <Background>
