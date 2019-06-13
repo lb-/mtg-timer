@@ -6,6 +6,7 @@ import Timer from './Timer';
 
 const App = () => {
   const [title, setState] = useState('Title');
+  const [minutes, setMinutes] = useState(25);
   return (
     <div className="App">
       <Background>
@@ -17,7 +18,7 @@ const App = () => {
           />
         </header>
         <main className="App-main">
-          <Timer minutes={25} />
+          <Timer minutes={minutes} onStartingMinutesChange={setMinutes} />
         </main>
       </Background>
     </div>

@@ -15,10 +15,11 @@ const onChangeMinutes = (setMinutes, min = 1, max = 99) => ({
 const PLAY_SYMBOL = '▶';
 const PAUSE_SYMBOL = '❚❚';
 
-const Timer = ({ minutes = 0, seconds = 0 }) => {
+const Timer = ({ minutes = 0, onStartingMinutesChange }) => {
+  const [hasStarted, setHasStarted] = useState(false);
   const [active, setActive] = useState(false);
   const [min, setMinutes] = useState(minutes);
-  const [sec, setSeconds] = useState(seconds);
+  const [sec, setSeconds] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,13 +39,32 @@ const Timer = ({ minutes = 0, seconds = 0 }) => {
     <div className="Timer">
       <input
         className="Timer-minutes"
-        onChange={onChangeMinutes(setMinutes)}
+        onChange={onChangeMinutes(_ => {
+          setMinutes(_);
+          onStartingMinutesChange(_);
+        })}
         value={`${min}`.padStart(2, '0')}
       />
       <span className="Timer-spacer">:</span>
       <span className="Timer-seconds">{`${sec}`.padStart(2, '0')}</span>
-      <button onClick={() => setActive(!active)}>
+      <button
+        onClick={() => {
+          setActive(!active);
+          setHasStarted(true);
+        }}
+      >
         {active ? PAUSE_SYMBOL : PLAY_SYMBOL}
+      </button>
+      <button
+        hidden={!hasStarted}
+        onClick={() => {
+          setActive(false);
+          setHasStarted(false);
+          setMinutes(minutes);
+          setSeconds(0);
+        }}
+      >
+        ↷
       </button>
     </div>
   );
