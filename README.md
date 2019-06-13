@@ -2,6 +2,9 @@
 
 Full screen timer application for Magic The Gathering tournaments. Created in React.js.
 
+URL Structure: http://localhost:3000/?title=Round%20Six&minutes=25&bg=dd747b4
+Where bg is a favMe code from deviant art
+
 Inspired by https://github.com/gregorkuznik/mtg-full-screen-timer
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
