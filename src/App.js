@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Background from './Background';
+import Timer from './Timer';
 
 function App() {
   return (
@@ -8,10 +9,7 @@ function App() {
       <Background>
         <header className="App-header">Title</header>
         <main>
-          <p>
-            <span>25</span>
-            <span>30</span>
-          </p>
+          <Timer minutes={3} seconds={25} />
         </main>
       </Background>
     </div>
