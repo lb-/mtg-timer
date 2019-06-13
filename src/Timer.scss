@@ -12,12 +12,20 @@ $timer-font-size: 35vw;
     font-size: $timer-font-size;
     line-height: $timer-font-size;
 
+    &.is-close {
+      color: #f9aa8f;
+    }
+
+    &.is-finished {
+      color: #c25c55;
+    }
+
     .Timer-minutes {
       // this is an input
       background: transparent;
       border: none;
       font-family: 'Oxygen Mono';
-      color: white;
+      color: inherit;
       font-size: $timer-font-size;
       width: 42vw;
       line-height: $timer-font-size;

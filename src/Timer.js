@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import './Timer.scss';
 
-const onChangeMinutes = (setMinutes, min = 1, max = 99) => ({
+const onChangeMinutes = (setMinutes, min = 0, max = 99) => ({
   target: { value },
 }) => {
   const num = parseInt(value, 10);
@@ -14,12 +15,15 @@ const onChangeMinutes = (setMinutes, min = 1, max = 99) => ({
 
 const PLAY_SYMBOL = '▶';
 const PAUSE_SYMBOL = '❚❚';
+const ONE_SECOND = 1000;
 
 const Timer = ({ minutes = 0, onStartingMinutesChange }) => {
   const [hasStarted, setHasStarted] = useState(false);
   const [active, setActive] = useState(false);
   const [min, setMinutes] = useState(minutes);
   const [sec, setSeconds] = useState(0);
+  const isFinished = min <= 0;
+  const isLastFiveMinutes = min <= 5;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,13 +35,19 @@ const Timer = ({ minutes = 0, onStartingMinutesChange }) => {
         }
         return s - 1;
       });
-    }, 1000);
+    }, ONE_SECOND);
     return () => clearInterval(interval);
   }, [active]);
 
   return (
     <div className="Timer">
-      <div className="Timer-times">
+      <div
+        className={classNames(
+          'Timer-times',
+          isFinished && 'is-finished',
+          isLastFiveMinutes && 'is-close',
+        )}
+      >
         <input
           className="Timer-minutes"
           disabled={active || hasStarted}
