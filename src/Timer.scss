@@ -1,19 +1,29 @@
+$timer-font-size: 35vw;
+
 .Timer {
   align-items: center;
   color: white;
   cursor: default;
   display: flex;
   font-family: 'Oxygen Mono';
-  font-size: 30vw;
-  height: 35vw;
+  font-size: $timer-font-size;
+  line-height: $timer-font-size;
   justify-content: center;
   width: 100%;
 
   .Timer-minutes {
+    // this is an input
     background: transparent;
     border: none;
+    font-family: 'Oxygen Mono';
     color: white;
-    font-size: 30vw;
-    width: 30vw;
+    font-size: $timer-font-size;
+    width: 42vw;
+    line-height: $timer-font-size;
+  }
+
+  .Timer-spacer {
+    margin-left: -5vw;
+    margin-right: -5vw;
   }
 }
