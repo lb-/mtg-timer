@@ -15,6 +15,7 @@ const onChangeMinutes = (setMinutes, min = 0, max = 99) => ({
 
 const PLAY_SYMBOL = '▶';
 const PAUSE_SYMBOL = '❚❚';
+const REFRESH_SYMBOL = '↺';
 const ONE_SECOND = 1000;
 
 const Timer = ({ minutes = 0, onStartingMinutesChange }) => {
@@ -80,7 +81,7 @@ const Timer = ({ minutes = 0, onStartingMinutesChange }) => {
             setSeconds(0);
           }}
         >
-          <span className="symbol">↷</span>
+          <span className="symbol">{REFRESH_SYMBOL}</span>
         </button>
       </div>
     </div>
