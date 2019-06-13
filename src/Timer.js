@@ -39,10 +39,10 @@ const Timer = ({ minutes = 0, seconds = 0 }) => {
       <input
         className="Timer-minutes"
         onChange={onChangeMinutes(setMinutes)}
-        value={min}
+        value={`${min}`.padStart(2, '0')}
       />
       <span className="Timer-spacer">:</span>
-      <span className="Timer-seconds">{sec}</span>
+      <span className="Timer-seconds">{`${sec}`.padStart(2, '0')}</span>
       <button onClick={() => setActive(!active)}>
         {active ? PAUSE_SYMBOL : PLAY_SYMBOL}
       </button>
