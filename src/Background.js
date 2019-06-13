@@ -1,8 +1,28 @@
 import React from 'react';
 import './Background.scss';
 
-const Background = ({ children }) => (
-  <div className="Background">{children}</div>
-);
+const Background = ({ children, favMeCode = 'dd98zov' }) => {
+  const [artwork, setArtwork] = React.useState({});
+
+  React.useEffect(() => {
+    fetch(`/oembed?url=http://fav.me/${favMeCode}`)
+      .then(results => results.json())
+      .then(({ url, author_name, title, type } = {}) => {
+        if (type !== 'photo') return;
+        setArtwork({ url, author: author_name, title });
+      });
+  }, [favMeCode]);
+
+  console.log('artwork', artwork);
+
+  return (
+    <div
+      className="Background"
+      style={artwork.url ? { 'background-image': `url('${artwork.url}')` } : {}}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default Background;
