@@ -22,6 +22,15 @@ const Background = ({ children, favMeCode }) => {
       style={artwork.url ? { 'background-image': `url('${artwork.url}')` } : {}}
     >
       {children}
+      <div
+        className={classNames(
+          'Background-info',
+          artwork.author && artwork.title && 'visible',
+        )}
+      >
+        <span className="title">{artwork.title}</span>
+        <span className="author">by {artwork.author}</span>
+      </div>
     </div>
   );
 };

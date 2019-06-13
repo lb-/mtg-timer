@@ -6,4 +6,23 @@
   padding: 2vw;
   width: 100%;
   transition: backround-image 0.2s ease-in-out;
+
+  .Background-info {
+    bottom: 0;
+    color: white;
+    left: 0;
+    opacity: 0;
+    padding: 0.5vw;
+    position: absolute;
+    transition: opacity 0.2s ease-in-out;
+
+    &.visible {
+      opacity: 1;
+    }
+
+    .title {
+      font-weight: 600;
+      padding-right: 0.25rem;
+    }
+  }
 }
