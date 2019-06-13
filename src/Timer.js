@@ -40,6 +40,7 @@ const Timer = ({ minutes = 0, onStartingMinutesChange }) => {
       <div className="Timer-times">
         <input
           className="Timer-minutes"
+          disabled={active || hasStarted}
           onChange={onChangeMinutes(_ => {
             setMinutes(_);
             onStartingMinutesChange(_);
