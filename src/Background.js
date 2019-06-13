@@ -1,4 +1,6 @@
 import React from 'react';
+import classNames from 'classnames';
+
 import './Background.scss';
 
 const Background = ({ children, favMeCode }) => {
@@ -14,11 +16,9 @@ const Background = ({ children, favMeCode }) => {
       });
   }, [favMeCode]);
 
-  console.log('artwork', artwork);
-
   return (
     <div
-      className="Background"
+      className={classNames('Background', artwork.url && 'has-image')}
       style={artwork.url ? { 'background-image': `url('${artwork.url}')` } : {}}
     >
       {children}
