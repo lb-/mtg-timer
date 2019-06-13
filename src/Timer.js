@@ -12,8 +12,13 @@ const onChangeMinutes = (setMin, min = 1, max = 99) => ({
   }
 };
 
+const PLAY_SYMBOL = '▶';
+const PAUSE_SYMBOL = '❚❚';
+
 const Timer = ({ minutes = 0, seconds = 0 }) => {
+  const [active, setActive] = useState(false);
   const [min, setMin] = useState(minutes);
+  const [sec] = useState(seconds);
   return (
     <div className="Timer">
       <input
@@ -22,7 +27,10 @@ const Timer = ({ minutes = 0, seconds = 0 }) => {
         value={min}
       />
       <span className="Timer-spacer">:</span>
-      <span className="Timer-seconds">{seconds}</span>
+      <span className="Timer-seconds">{sec}</span>
+      <button onClick={() => setActive(!active)}>
+        {active ? PAUSE_SYMBOL : PLAY_SYMBOL}
+      </button>
     </div>
   );
 };
