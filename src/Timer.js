@@ -37,35 +37,41 @@ const Timer = ({ minutes = 0, onStartingMinutesChange }) => {
 
   return (
     <div className="Timer">
-      <input
-        className="Timer-minutes"
-        onChange={onChangeMinutes(_ => {
-          setMinutes(_);
-          onStartingMinutesChange(_);
-        })}
-        value={`${min}`.padStart(2, '0')}
-      />
-      <span className="Timer-spacer">:</span>
-      <span className="Timer-seconds">{`${sec}`.padStart(2, '0')}</span>
-      <button
-        onClick={() => {
-          setActive(!active);
-          setHasStarted(true);
-        }}
-      >
-        {active ? PAUSE_SYMBOL : PLAY_SYMBOL}
-      </button>
-      <button
-        hidden={!hasStarted}
-        onClick={() => {
-          setActive(false);
-          setHasStarted(false);
-          setMinutes(minutes);
-          setSeconds(0);
-        }}
-      >
-        ↷
-      </button>
+      <div className="Timer-times">
+        <input
+          className="Timer-minutes"
+          onChange={onChangeMinutes(_ => {
+            setMinutes(_);
+            onStartingMinutesChange(_);
+          })}
+          value={`${min}`.padStart(2, '0')}
+        />
+        <span className="Timer-spacer">:</span>
+        <span className="Timer-seconds">{`${sec}`.padStart(2, '0')}</span>
+      </div>
+      <div className="Timer-actions">
+        <button
+          className="Timer-action action-play-pause"
+          onClick={() => {
+            setActive(!active);
+            setHasStarted(true);
+          }}
+        >
+          <span className="symbol">{active ? PAUSE_SYMBOL : PLAY_SYMBOL}</span>
+        </button>
+        <button
+          className="Timer-action action-reset"
+          hidden={!hasStarted}
+          onClick={() => {
+            setActive(false);
+            setHasStarted(false);
+            setMinutes(minutes);
+            setSeconds(0);
+          }}
+        >
+          <span className="symbol">↷</span>
+        </button>
+      </div>
     </div>
   );
 };
