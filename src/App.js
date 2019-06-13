@@ -13,7 +13,7 @@ const App = () => {
   const [minutes, setMinutes] = useState(initialMinutes);
   return (
     <div className="App">
-      <Background>
+      <Background favMeCode={params.get('bg') || 'dd98zov'}>
         <header className="App-header">
           <input
             className="App-header-input"
