@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import './App.scss';
 import Background from './Background';
 import Timer from './Timer';
@@ -16,7 +17,7 @@ const App = () => {
           />
         </header>
         <main className="App-main">
-          <Timer minutes={14} seconds={25} />
+          <Timer minutes={25} />
         </main>
       </Background>
     </div>
