@@ -8,7 +8,7 @@ const Background = ({ children, favMeCode }) => {
 
   React.useEffect(() => {
     if (!favMeCode) return;
-    fetch(`/oembed?url=http://fav.me/${favMeCode}`)
+    fetch(`https://backend.deviantart.com/oembed?url=http://fav.me/${favMeCode}`)
       .then(results => results.json())
       .then(({ url, author_name, title, type } = {}) => {
         if (type !== 'photo') return;
