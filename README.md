@@ -9,6 +9,7 @@ Inspired by https://github.com/gregorkuznik/mtg-full-screen-timer
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
 ## Available Scripts
 
 In the project directory, you can run:
