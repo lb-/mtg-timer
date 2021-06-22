@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
+
 import './Timer.scss';
 
 const onChangeMinutes = (setMinutes, min = 0, max = 99) => ({

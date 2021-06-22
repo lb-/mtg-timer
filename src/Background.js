@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import './Background.scss';
 
 const Background = ({ children, favMeCode }) => {
-  const [artwork, setArtwork] = React.useState({});
+  const [artwork, setArtwork] = useState({});
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!favMeCode) return;
     fetch(`/oembed?url=http://fav.me/${favMeCode}`)
       .then(results => results.json())

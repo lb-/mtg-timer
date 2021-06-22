@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 
-import './App.scss';
 import Background from './Background';
 import Timer from './Timer';
 
-const App = ({ defaultFavMeCode = 'dd98zov', defaultDuration = 50 }) => {
+import './App.scss';
+
+const App = ({
+  defaultFavMeCode = 'dd98zov',
+  defaultDuration = 50,
+  defaultTitle = 'Go!',
+}) => {
   var url = new URL(window.location);
   var params = new URLSearchParams(url.search);
   const minutesFromUrl = parseInt(params.get('minutes'), 10);
@@ -12,11 +18,14 @@ const App = ({ defaultFavMeCode = 'dd98zov', defaultDuration = 50 }) => {
     ? defaultDuration
     : minutesFromUrl;
 
-  const [title, setState] = useState(params.get('title') || 'Title');
+  const [title, setState] = useState(params.get('title') || defaultTitle);
   const [minutes, setMinutes] = useState(initialMinutes);
 
   return (
     <div className="App">
+      <Helmet>
+        <title>{title} - MTG Timer</title>
+      </Helmet>
       <Background favMeCode={params.get('bg') || defaultFavMeCode}>
         <header className="App-header">
           <input
