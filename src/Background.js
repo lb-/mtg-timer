@@ -19,7 +19,7 @@ const Background = ({ children, favMeCode }) => {
   return (
     <div
       className={classNames('Background', artwork.url && 'has-image')}
-      style={artwork.url ? { 'background-image': `url('${artwork.url}')` } : {}}
+      style={artwork.url ? { backgroundImage: `url('${artwork.url}')` } : {}}
     >
       {children}
       <div
