@@ -2,8 +2,14 @@
 
 Full screen timer application for Magic The Gathering tournaments. Created in React.js.
 
-URL Structure: http://localhost:3000/?title=Round%20Six&minutes=25&bg=dd747b4
-Where bg is a favMe code from deviant art
+URL Structure: 
+* http://localhost:3000/?title=Round%20Six&minutes=25&bg=dd747b4
+* Where bg is a favMe code from deviant art
+* OR 
+* http://localhost:3000/?title=Double%20Headed%20Giant&minutes=50&art=caraidart.Squirrel-Sovereign-880580351
+* where the art is the artist then dot then the artwork name
+* e.g. https://www.deviantart.com/caraidart/art/Squirrel-Sovereign-880580351
+
 
 Inspired by https://github.com/gregorkuznik/mtg-full-screen-timer
 

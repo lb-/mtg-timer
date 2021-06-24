@@ -3,18 +3,25 @@ import classNames from 'classnames';
 
 import './Background.scss';
 
-const Background = ({ children, favMeCode }) => {
+const Background = ({ children, art, favMeCode }) => {
   const [artwork, setArtwork] = useState({});
 
   useEffect(() => {
-    if (!favMeCode) return;
-    fetch(`/oembed?url=http://fav.me/${favMeCode}`)
-      .then(results => results.json())
+    if (!(favMeCode && art)) return;
+
+    const [artist, ...name] = (art || '').split('.');
+
+    const url = art
+      ? `https://www.deviantart.com/${artist}/art/${name.join('.')}`
+      : `http://fav.me/${favMeCode}`;
+
+    fetch(`/oembed?url=${url}`)
+      .then((results) => results.json())
       .then(({ url, author_name, title, type } = {}) => {
         if (type !== 'photo') return;
         setArtwork({ url, author: author_name, title });
       });
-  }, [favMeCode]);
+  }, [art, favMeCode]);
 
   return (
     <div

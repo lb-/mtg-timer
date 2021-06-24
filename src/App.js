@@ -26,7 +26,10 @@ const App = ({
       <Helmet>
         <title>{title} - MTG Timer</title>
       </Helmet>
-      <Background favMeCode={params.get('bg') || defaultFavMeCode}>
+      <Background
+        art={params.get('art')}
+        favMeCode={params.get('bg') || defaultFavMeCode}
+      >
         <header className="App-header">
           <input
             className="App-header-input"
